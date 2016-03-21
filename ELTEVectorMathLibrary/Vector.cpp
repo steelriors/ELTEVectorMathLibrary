@@ -14,7 +14,6 @@ namespace ELTEVectorMathLib
 	{
 	}
 
-
 	Scalar Vector::Dot(const Vector& a, const Vector& b)
 	{
 		return (a.x*b.x + a.y*b.y + a.z*b.z + a.w*b.w);
@@ -51,6 +50,55 @@ namespace ELTEVectorMathLib
 	Vector Vector::Multiply(const Matrix& a, const Vector& b)
 	{
 		return Multiply(b, Matrix::Transpose(a));
+	}
+	Vector Vector::RotateAroundX(const Vector& a, Scalar radians)
+	{
+		Matrix rotmatrix(Vector(1, 0, 0, 0),
+			Vector(0, cos(radians), -sin(radians), 0),
+			Vector(0, sin(radians), cos(radians), 0),
+			Vector(0, 0, 0, 1));
+		Vector retval;
+		retval = Vector::Multiply(rotmatrix,a);
+		return retval;
+	}
+	Vector Vector::RotateAroundY(const Vector& a, Scalar radians)
+	{
+		Matrix rotmatrix(Vector(cos(radians), 0, sin(radians), 0),
+			Vector(0, 1, 0, 0),
+			Vector(-sin(radians), 0, cos(radians), 0),
+			Vector(0, 0, 0, 1));
+		Vector retval;
+		retval = Vector::Multiply(rotmatrix, a);
+		return retval;
+	}
+	Vector Vector::RotateAroundZ(const Vector& a, Scalar radians)
+	{
+		Matrix rotmatrix(Vector(cos(radians), -sin(radians), 0, 0),
+			Vector(sin(radians), cos(radians), 0, 0),
+			Vector(0, 0, 1, 0),
+			Vector(0, 0, 0, 1));
+		Vector retval;
+		retval = Vector::Multiply(rotmatrix, a);
+		return retval;
+	}
+	Scalar Vector::Norm_p(const Vector& a, Scalar p)
+	{
+		Scalar retVal = 0;
+		retVal = pow(a.x, p) + pow(a.y, p) + pow(a.z, p) + pow(a.w, p);
+		retVal = pow(retVal, 1 / p);
+		return retVal;
+	}
+	Scalar Vector::Norm_inf(const Vector& a)
+	{
+		Scalar max = abs(a.x);
+		if (max < abs(a.y))
+			max = abs(a.y);
+		if (max < abs(a.z))
+			max = abs(a.z);
+		if (max < abs(a.w))
+			max = abs(a.w);
+		return max;
+
 	}
 
 

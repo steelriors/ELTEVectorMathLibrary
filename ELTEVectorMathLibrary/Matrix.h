@@ -17,6 +17,10 @@ namespace ELTEVectorMathLib
 		static Matrix Multiply(const Matrix& a, const Matrix& b);
 		static Matrix Transpose(const Matrix& a);
 		static Matrix Identity();
+		static Scalar Norm_max(const Matrix& a);
+		static Scalar Norm_1(const Matrix& a);
+		static Scalar Norm_inf(const Matrix& a);
+		static Scalar Norm_frob(const Matrix& a);
 	};
 
 
