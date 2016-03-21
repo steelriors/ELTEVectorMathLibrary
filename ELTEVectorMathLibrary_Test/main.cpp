@@ -41,9 +41,19 @@ int main(int argc, char** argv)
 	for (int i = 1; i < 5; i++)
 		cout << endl << endl << Vector::Norm_p(v,i);
 
+	cout << endl << endl << Vector::Norm_inf(v);
+
+	m = Matrix(Vector(1, 2, 3, 4), Vector(2, 3, 4, 5), Vector(3, 4, 5, 6), Vector(4, 5, 6, 7));
+
+	cout << endl << endl << m;
+
+	for (int i = 0; i < 5; i++)
+		cout << endl << endl << Matrix::Pow(m, i);
+
 	cout << endl << endl << v;
 
-	cout << endl << endl << Vector::Norm_inf(v);
+	for (int i = 0; i < 5; i++)
+		cout << endl << endl << Vector::Pow(v, i);
 
 	cin.get();
 
