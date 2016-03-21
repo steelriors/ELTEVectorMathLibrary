@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include <math.h> 
 
 using namespace std;
 
@@ -50,6 +51,53 @@ namespace ELTEVectorMathLib
 		retVal.row[2] = Vector(0, 0, 1, 0);
 		retVal.row[3] = Vector(0, 0, 0, 1);
 
+		return retVal;
+	}
+	Scalar Matrix::Norm_max(const Matrix& a)
+	{
+		Scalar max = abs(a.row[0].x);
+		for (int i = 0; i < 4; i++) {
+			if (max < abs(a.row[i].x))
+				max = abs(a.row[i].x);
+			if (max < abs(a.row[i].y))
+				max = abs(a.row[i].y);
+			if (max < abs(a.row[i].z))
+				max = abs(a.row[i].z);
+			if (max < abs(a.row[i].w))
+				max = abs(a.row[i].w);
+		}
+		return max;
+	}
+	Scalar Matrix::Norm_1(const Matrix& a)
+	{
+		Scalar max = abs(a.row[0].x) + abs(a.row[1].x) + abs(a.row[2].x) + abs(a.row[3].x);
+		if (max < abs(a.row[0].y) + abs(a.row[1].y) + abs(a.row[2].y) + abs(a.row[3].y))
+			max = abs(a.row[0].y) + abs(a.row[1].y) + abs(a.row[2].y) + abs(a.row[3].y);
+		if (max < abs(a.row[0].z) + abs(a.row[1].z) + abs(a.row[2].z) + abs(a.row[3].z))
+			max = abs(a.row[0].z) + abs(a.row[1].z) + abs(a.row[2].z) + abs(a.row[3].z);
+		if (max < abs(a.row[0].w) + abs(a.row[1].w) + abs(a.row[2].w) + abs(a.row[3].w))
+			max = abs(a.row[0].w) + abs(a.row[1].w) + abs(a.row[2].w) + abs(a.row[3].w);
+		return max;
+	}
+	Scalar Matrix::Norm_inf(const Matrix& a)
+	{
+		Scalar max = abs(a.row[0].x) + abs(a.row[0].y) + abs(a.row[0].z) + abs(a.row[0].w);
+		for (int i = 1; i < 4; i++) {
+			if (max < abs(a.row[i].x) + abs(a.row[i].y) + abs(a.row[i].z) + abs(a.row[i].w))
+				max = abs(a.row[i].x) + abs(a.row[i].y) + abs(a.row[i].z) + abs(a.row[i].w);
+		}
+		return max;
+	}
+	Scalar Matrix::Norm_frob(const Matrix& a)
+	{
+		Scalar retVal = 0;
+		for (int i = 0; i < 4; i++) {
+			retVal += pow(a.row[i].x,2);
+			retVal += pow(a.row[i].y,2);
+			retVal += pow(a.row[i].z,2);
+			retVal += pow(a.row[i].w,2);
+		}
+		retVal = sqrt(retVal);
 		return retVal;
 	}
 

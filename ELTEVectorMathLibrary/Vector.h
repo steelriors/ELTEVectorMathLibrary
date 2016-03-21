@@ -23,6 +23,11 @@ namespace ELTEVectorMathLib
 		static Vector Multiply(const Vector& a, const Vector& b);
 		static Vector Multiply(const Vector& a, const Matrix& b);
 		static Vector Multiply(const Matrix& a, const Vector& b);
+		static Vector RotateAroundX(const Vector& a, Scalar radians);
+		static Vector RotateAroundY(const Vector& a, Scalar radians);
+		static Vector RotateAroundZ(const Vector& a, Scalar radians);
+		static Scalar Norm_p(const Vector& a, Scalar p);
+		static Scalar Norm_inf(const Vector& a);
 	};
 
 
