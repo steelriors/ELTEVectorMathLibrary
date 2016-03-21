@@ -100,11 +100,30 @@ namespace ELTEVectorMathLib
 		retVal = sqrt(retVal);
 		return retVal;
 	}
+	Matrix Matrix::CreateRotation(Scalar x, Scalar y, Scalar z)
+	{
+		Matrix rotX = Matrix(
+			Vector(1, 0, 0),
+			Vector(0, cos(x), -sin(x)),
+			Vector(0, sin(x), cos(x))
+			);
+		Matrix rotY = Matrix(
+			Vector(cos(y), 0, sin(y)),
+			Vector(0, 1, 0),
+			Vector(-sin(y), 0, cos(y))
+			);
+		Matrix rotZ = Matrix(
+			Vector(cos(z), -sin(z), 0),
+			Vector(sin(z), cos(z), 0),
+			Vector(0, 0, 1)
+			);
+		return Matrix::Multiply(Matrix::Multiply(rotX, rotY), rotZ);
+	}
 
 
 	ostream& operator<<(ostream& os, const Matrix& m)
 	{
-		os << "[" << m.row[0] << endl << " " << m.row[1] << endl << " " << m.row[2] << endl << " " << m.row[3] << "]";
+		os << fixed << "[" << m.row[0] << endl << " " << m.row[1] << endl << " " << m.row[2] << endl << " " << m.row[3] << "]";
 		return os;
 	}
 }

@@ -28,6 +28,10 @@ namespace ELTEVectorMathLib
 		static Vector RotateAroundZ(const Vector& a, Scalar radians);
 		static Scalar Norm_p(const Vector& a, Scalar p);
 		static Scalar Norm_inf(const Vector& a);
+		static Vector Normalize(const Vector& a);
+		static Scalar Length(const Vector& a);
+		static Scalar Distance(const Vector& a, const Vector& b);
+		static Vector Lerp(const Vector& a, const Vector& b, Scalar t);
 	};
 
 

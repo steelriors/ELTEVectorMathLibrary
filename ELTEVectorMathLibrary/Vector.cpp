@@ -100,11 +100,27 @@ namespace ELTEVectorMathLib
 		return max;
 
 	}
+	Vector Vector::Normalize(const Vector& a)
+	{
+		return Multiply(a, (Scalar)(1.0 / Length(a)));
+	}
+	Scalar Vector::Length(const Vector& a)
+	{
+		return sqrt(a.x*a.x + a.y*a.y + a.z*a.z + a.w*a.w);
+	}
+	Scalar Vector::Distance(const Vector& a, const Vector& b)
+	{
+		return Length(Subtract(b, a));
+	}
+	Vector Vector::Lerp(const Vector& a, const Vector& b, Scalar t)
+	{
+		return Vector(lerp(a.x, b.x, t), lerp(a.y, b.y, t), lerp(a.z, b.z, t), lerp(a.w, b.w, t));
+	}
 
 
 	ostream& operator<<(ostream& os, const Vector& v)
 	{
-		os << "( " << v.x << ", " << v.y << ", " << v.z << ", " << v.w << " )";
+		os << fixed << "( " << v.x << ", " << v.y << ", " << v.z << ", " << v.w << " )";
 		return os;
 	}
 }

@@ -21,6 +21,7 @@ namespace ELTEVectorMathLib
 		static Scalar Norm_1(const Matrix& a);
 		static Scalar Norm_inf(const Matrix& a);
 		static Scalar Norm_frob(const Matrix& a);
+		static Matrix CreateRotation(Scalar x, Scalar y, Scalar z);
 	};
 
 
