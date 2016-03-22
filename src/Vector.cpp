@@ -1,5 +1,5 @@
-#include "Vector.h"
-#include "Matrix.h"
+#include "../include/Vector.h"
+#include "../include/Matrix.h"
 
 using namespace std;
 

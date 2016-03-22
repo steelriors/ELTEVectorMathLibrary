@@ -1,10 +1,10 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 
-#include "../ELTEVectorMathLibrary/Scalar.h"
-#include "../ELTEVectorMathLibrary/Vector.h"
-#include "../ELTEVectorMathLibrary/Matrix.h"
-#include "../ELTEVectorMathLibrary/Quaternion.h"
+#include "../include/Scalar.h"
+#include "../include/Vector.h"
+#include "../include/Matrix.h"
+#include "../include/Quaternion.h"
 
 
 #include <iostream>
