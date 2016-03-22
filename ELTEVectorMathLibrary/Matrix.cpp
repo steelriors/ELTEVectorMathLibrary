@@ -129,4 +129,13 @@ namespace ELTEVectorMathLib
 		os << "[" << m.row[0] << endl << " " << m.row[1] << endl << " " << m.row[2] << endl << " " << m.row[3] << "]";
 		return os;
 	}
+
+	bool operator==(const Matrix& a, const Matrix& b)
+	{
+		for (int i = 0; i < 4; i++) {
+			if (a.row[i].x != b.row[i].x || a.row[i].y != b.row[i].y || a.row[i].z != b.row[i].z || a.row[i].w != b.row[i].w)
+				return false;
+			return true;
+		}
+	}
 }

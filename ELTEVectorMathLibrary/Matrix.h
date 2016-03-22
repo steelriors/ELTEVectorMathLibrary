@@ -27,6 +27,7 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Matrix& m);
+	bool operator==(const Matrix& a, const Matrix& b);
 }
 
 #endif // _MATRIX_H_
