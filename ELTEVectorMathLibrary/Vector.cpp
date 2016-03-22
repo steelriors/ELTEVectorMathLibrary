@@ -51,6 +51,27 @@ namespace ELTEVectorMathLib
 	{
 		return Multiply(b, Matrix::Transpose(a));
 	}
+	Vector Vector::Pow(const Vector& a, unsigned int p)
+	{
+		if (p == 0)
+			return Vector::Identity();
+
+		Vector retVal = a;
+
+		for (int i = 0; i < p - 1; i++) {
+			retVal = Vector::Multiply(retVal, a);
+		}
+
+		return retVal;
+	}
+	Vector Vector::Identity()
+	{
+		return Vector(1, 0, 0, 0);
+	}
+	Vector Vector::Null()
+	{
+		return Vector(0, 0, 0, 0);
+	}
 	Vector Vector::RotateAroundX(const Vector& a, Scalar radians)
 	{
 		Matrix rotmatrix(Vector(1, 0, 0, 0),

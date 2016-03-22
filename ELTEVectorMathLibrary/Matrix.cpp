@@ -31,6 +31,19 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+	Matrix Matrix::Pow(const Matrix& a, unsigned int p)
+	{
+		if (p == 0)
+			return Matrix::Identity();
+
+		Matrix retVal = a;
+
+		for (int i = 0; i < p-1; i++) {
+			retVal = Matrix::Multiply(retVal, a);
+		}
+
+		return retVal;
+	}
 	Matrix Matrix::Transpose(const Matrix& a)
 	{
 		Matrix retVal;
@@ -50,6 +63,15 @@ namespace ELTEVectorMathLib
 		retVal.row[1] = Vector(0, 1, 0, 0);
 		retVal.row[2] = Vector(0, 0, 1, 0);
 		retVal.row[3] = Vector(0, 0, 0, 1);
+
+		return retVal;
+	}
+	Matrix Matrix::Null()
+	{
+		Matrix retVal;
+
+		for (int i = 0; i < 4; i++)
+			retVal.row[i] = Vector(0, 0, 0, 0);
 
 		return retVal;
 	}
@@ -125,5 +147,14 @@ namespace ELTEVectorMathLib
 	{
 		os << fixed << "[" << m.row[0] << endl << " " << m.row[1] << endl << " " << m.row[2] << endl << " " << m.row[3] << "]";
 		return os;
+	}
+
+	bool operator==(const Matrix& a, const Matrix& b)
+	{
+		for (int i = 0; i < 4; i++) {
+			if (a.row[i].x != b.row[i].x || a.row[i].y != b.row[i].y || a.row[i].z != b.row[i].z || a.row[i].w != b.row[i].w)
+				return false;
+			return true;
+		}
 	}
 }
