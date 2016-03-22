@@ -1,4 +1,4 @@
-#include "SSEVector.h"
+#include "../include/SSEVector.h"
 
 using namespace std;
 

@@ -1,9 +1,8 @@
-#include "../ELTEVectorMathLibrary/Scalar.h"
-#include "../ELTEVectorMathLibrary/Vector.h"
-#include "../ELTEVectorMathLibrary/Matrix.h"
-#include "../ELTEVectorMathLibrary/Quaternion.h"
-
-#include "../ELTEVectorMathLibrary/SSEVector.h"
+#include "../include/Scalar.h"
+#include "../include/Vector.h"
+#include "../include/Matrix.h"
+#include "../include/Quaternion.h"
+#include "../include/SSEVector.h"
 
 #include <iostream>
 using namespace std;
