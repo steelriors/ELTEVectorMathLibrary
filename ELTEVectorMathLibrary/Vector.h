@@ -25,7 +25,7 @@ namespace ELTEVectorMathLib
 		static Vector Multiply(const Matrix& a, const Vector& b);
 		static Vector Identity();
 		static Vector Null();
-		static Vector Pow(const Vector& a, unsigned int p);
+		static Vector Pow(const Vector& a, /*unsigned int*/Scalar p);
 		static Vector RotateAroundX(const Vector& a, Scalar radians);
 		static Vector RotateAroundY(const Vector& a, Scalar radians);
 		static Vector RotateAroundZ(const Vector& a, Scalar radians);

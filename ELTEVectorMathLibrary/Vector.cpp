@@ -51,18 +51,19 @@ namespace ELTEVectorMathLib
 	{
 		return Multiply(b, Matrix::Transpose(a));
 	}
-	Vector Vector::Pow(const Vector& a, unsigned int p)
+	Vector Vector::Pow(const Vector& a, /*unsigned int*/Scalar p)
 	{
-		if (p == 0)
-			return Vector::Identity();
+		//if (p == 0)
+		//	return Vector::Identity();
 
-		Vector retVal = a;
+		//Vector retVal = a;
 
-		for (int i = 0; i < p - 1; i++) {
-			retVal = Vector::Multiply(retVal, a);
-		}
+		//for (unsigned int i = 0; i < p - 1; i++) {
+		//	retVal = Vector::Multiply(retVal, a);
+		//}
 
-		return retVal;
+		//return retVal;
+		return Vector(pow(a.x, p), pow(a.y, p), pow(a.z, p), pow(a.w, p));
 	}
 	Vector Vector::Identity()
 	{
