@@ -34,10 +34,6 @@ namespace ELTEVectorMathLib
 	{
 		return Vector(a.x*b, a.y*b, a.z*b, a.w*b);
 	}
-	Vector Vector::Multiply(const Vector& a, const Vector& b)
-	{
-		return Vector(a.x*b.x, a.y*b.y, a.z*b.z, a.w*b.w);
-	}
 	Vector Vector::Multiply(const Vector& a, const Matrix& b)
 	{
 		return Vector(
@@ -50,10 +46,6 @@ namespace ELTEVectorMathLib
 	Vector Vector::Multiply(const Matrix& a, const Vector& b)
 	{
 		return Multiply(b, Matrix::Transpose(a));
-	}
-	Vector Vector::Pow(const Vector& a, Scalar p)
-	{
-		return Vector(pow(a.x, p), pow(a.y, p), pow(a.z, p), pow(a.w, p));
 	}
 	Vector Vector::Identity()
 	{

@@ -57,6 +57,22 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+
+	Matrix Matrix::Multiply(const Matrix& a, Scalar b)
+	{
+		Matrix retVal = a;
+		
+		for (int i = 0; i < 4; i++)
+		{
+			retVal.row[i].x *= b;
+			retVal.row[i].y *= b;
+			retVal.row[i].z *= b;
+			retVal.row[i].w *= b;
+		}
+
+		return retVal;
+	}
+
 	Matrix Matrix::Pow(const Matrix& a, Scalar p)
 	{
 		if (p == 0)

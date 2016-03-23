@@ -30,8 +30,13 @@ TEST_CASE("Subtract") {
 	REQUIRE(Matrix::Subtract(A, B) == AminusB);
 }
 
-TEST_CASE("Multiply") {
+TEST_CASE("Matrix*Matrix") {
 	REQUIRE( Matrix::Multiply(A,B) == AB );
+}
+
+TEST_CASE("Matrix*Scalar") {
+	REQUIRE(Matrix::Multiply(A, 1) == A);
+	REQUIRE(Matrix::Multiply(A, 0) == Matrix::Null());
 }
 
 TEST_CASE("Raise to power") {
@@ -64,8 +69,4 @@ TEST_CASE("Frobenius Norm") {
 
 TEST_CASE("Rotation") {
 	REQUIRE(Matrix::Norm_max(Matrix::Subtract(Matrix::CreateRotation(2.0f * PI, 2.0f * PI, 2.0f * PI) , Matrix::Identity())) < 0.000001);
-}
-
-TEST_CASE("Normalize") {
-	REQUIRE(abs(Vector::Length(Vector::Normalize(Vector(34, 2, 4543, 2.777777777))) - 1) < FLT_EPSILON);
 }

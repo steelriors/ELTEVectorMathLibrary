@@ -20,12 +20,10 @@ namespace ELTEVectorMathLib
 		static Vector Add(const Vector& a, const Vector& b);
 		static Vector Subtract(const Vector& a, const Vector& b);
 		static Vector Multiply(const Vector& a, Scalar b);
-		static Vector Multiply(const Vector& a, const Vector& b);
 		static Vector Multiply(const Vector& a, const Matrix& b);
 		static Vector Multiply(const Matrix& a, const Vector& b);
 		static Vector Identity();
 		static Vector Null();
-		static Vector Pow(const Vector& a, Scalar p);
 		static Scalar Norm_p(const Vector& a, Scalar p);
 		static Scalar Norm_inf(const Vector& a);
 		static Vector Normalize(const Vector& a);
