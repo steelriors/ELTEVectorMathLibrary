@@ -51,18 +51,8 @@ namespace ELTEVectorMathLib
 	{
 		return Multiply(b, Matrix::Transpose(a));
 	}
-	Vector Vector::Pow(const Vector& a, /*unsigned int*/Scalar p)
+	Vector Vector::Pow(const Vector& a, Scalar p)
 	{
-		//if (p == 0)
-		//	return Vector::Identity();
-
-		//Vector retVal = a;
-
-		//for (unsigned int i = 0; i < p - 1; i++) {
-		//	retVal = Vector::Multiply(retVal, a);
-		//}
-
-		//return retVal;
 		return Vector(pow(a.x, p), pow(a.y, p), pow(a.z, p), pow(a.w, p));
 	}
 	Vector Vector::Identity()
@@ -72,36 +62,6 @@ namespace ELTEVectorMathLib
 	Vector Vector::Null()
 	{
 		return Vector(0, 0, 0, 0);
-	}
-	Vector Vector::RotateAroundX(const Vector& a, Scalar radians)
-	{
-		Matrix rotmatrix(Vector(1, 0, 0, 0),
-			Vector(0, cos(radians), -sin(radians), 0),
-			Vector(0, sin(radians), cos(radians), 0),
-			Vector(0, 0, 0, 1));
-		Vector retval;
-		retval = Vector::Multiply(rotmatrix,a);
-		return retval;
-	}
-	Vector Vector::RotateAroundY(const Vector& a, Scalar radians)
-	{
-		Matrix rotmatrix(Vector(cos(radians), 0, sin(radians), 0),
-			Vector(0, 1, 0, 0),
-			Vector(-sin(radians), 0, cos(radians), 0),
-			Vector(0, 0, 0, 1));
-		Vector retval;
-		retval = Vector::Multiply(rotmatrix, a);
-		return retval;
-	}
-	Vector Vector::RotateAroundZ(const Vector& a, Scalar radians)
-	{
-		Matrix rotmatrix(Vector(cos(radians), -sin(radians), 0, 0),
-			Vector(sin(radians), cos(radians), 0, 0),
-			Vector(0, 0, 1, 0),
-			Vector(0, 0, 0, 1));
-		Vector retval;
-		retval = Vector::Multiply(rotmatrix, a);
-		return retval;
 	}
 	Scalar Vector::Norm_p(const Vector& a, Scalar p)
 	{

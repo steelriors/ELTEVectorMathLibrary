@@ -19,6 +19,32 @@ namespace ELTEVectorMathLib
 	{
 	}
 
+	Matrix Matrix::Add(const Matrix& a, const Matrix& b)
+	{
+		Matrix retVal = a;
+		for (int i = 0; i < 4; i++)
+		{
+			retVal.row[i].x += b.row[i].x;
+			retVal.row[i].y += b.row[i].y;
+			retVal.row[i].z += b.row[i].z;
+			retVal.row[i].w += b.row[i].w;
+		}
+		return retVal;
+	}
+
+	Matrix Matrix::Subtract(const Matrix& a, const Matrix& b)
+	{
+		Matrix retVal = a;
+		for (int i = 0; i < 4; i++)
+		{
+			retVal.row[i].x -= b.row[i].x;
+			retVal.row[i].y -= b.row[i].y;
+			retVal.row[i].z -= b.row[i].z;
+			retVal.row[i].w -= b.row[i].w;
+		}
+		return retVal;
+	}
+
 	Matrix Matrix::Multiply(const Matrix& a, const Matrix& b)
 	{
 		Matrix retVal;
@@ -31,19 +57,18 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
-	Matrix Matrix::Pow(const Matrix& a, /*unsigned int*/Scalar p)
+	Matrix Matrix::Pow(const Matrix& a, Scalar p)
 	{
-		//if (p == 0)
-		//	return Matrix::Identity();
+		if (p == 0)
+			return Matrix::Identity();
 
-		//Matrix retVal = a;
+		Matrix retVal = a;
 
-		//for (unsigned int i = 0; i < p-1; i++) {
-		//	retVal = Matrix::Multiply(retVal, a);
-		//}
+		for (unsigned int i = 0; i < p-1; i++) {
+			retVal = Matrix::Multiply(retVal, a);
+		}
 
-		//return retVal;
-		return Matrix(Vector::Pow(a.row[0],p), Vector::Pow(a.row[1], p), Vector::Pow(a.row[2], p), Vector::Pow(a.row[3], p));
+		return retVal;
 	}
 	Matrix Matrix::Transpose(const Matrix& a)
 	{
@@ -126,19 +151,22 @@ namespace ELTEVectorMathLib
 	Matrix Matrix::CreateRotation(Scalar x, Scalar y, Scalar z)
 	{
 		Matrix rotX = Matrix(
-			Vector(1, 0, 0),
-			Vector(0, cos(x), -sin(x)),
-			Vector(0, sin(x), cos(x))
+			Vector(1, 0, 0, 0),
+			Vector(0, cos(x), -sin(x), 0),
+			Vector(0, sin(x), cos(x), 0),
+			Vector(0, 0, 0, 1)
 			);
 		Matrix rotY = Matrix(
-			Vector(cos(y), 0, sin(y)),
-			Vector(0, 1, 0),
-			Vector(-sin(y), 0, cos(y))
+			Vector(cos(y), 0, sin(y), 0),
+			Vector(0, 1, 0, 0),
+			Vector(-sin(y), 0, cos(y)),
+			Vector(0, 0, 0, 1)
 			);
 		Matrix rotZ = Matrix(
-			Vector(cos(z), -sin(z), 0),
-			Vector(sin(z), cos(z), 0),
-			Vector(0, 0, 1)
+			Vector(1, 0, 0, 0),
+			Vector(0, cos(z), -sin(z), 0),
+			Vector(0, sin(z), cos(z), 0),
+			Vector(0, 0, 0, 1)
 			);
 		return Matrix::Multiply(Matrix::Multiply(rotX, rotY), rotZ);
 	}
