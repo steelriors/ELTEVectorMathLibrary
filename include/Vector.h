@@ -1,3 +1,19 @@
+/**
+* \class Vector
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating vectors.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 #include <iostream>
@@ -34,6 +50,8 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Vector& v);
+	bool operator==(const Vector& a, const Vector& b);
+	bool operator!=(const Vector& a, const Vector& b);
 }
 
 #endif // _VECTOR_H_
