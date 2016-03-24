@@ -34,6 +34,8 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Vector& v);
+	bool operator==(const Vector& a, const Vector& b);
+	bool operator!=(const Vector& a, const Vector& b);
 }
 
 #endif // _VECTOR_H_

@@ -186,6 +186,14 @@ namespace ELTEVectorMathLib
 			);
 		return Matrix::Multiply(Matrix::Multiply(rotX, rotY), rotZ);
 	}
+	Matrix Matrix::Translate(Scalar x, Scalar y, Scalar z)
+	{
+		return Matrix(Vector(1, 0, 0, x), Vector(0, 1, 0, y), Vector(0, 0, 1, z), Vector(0, 0, 0, 1));
+	}
+	Matrix Matrix::Scale(Scalar x, Scalar y, Scalar z)
+	{
+		return Matrix(Vector(x, 0, 0, 0), Vector(0, y, 0, 0), Vector(0, 0, z, 0), Vector(0, 0, 0, 1));
+	}
 
 
 	ostream& operator<<(ostream& os, const Matrix& m)

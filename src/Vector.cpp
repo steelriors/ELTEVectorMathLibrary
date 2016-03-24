@@ -97,4 +97,18 @@ namespace ELTEVectorMathLib
 		os << fixed << "( " << v.x << ", " << v.y << ", " << v.z << ", " << v.w << " )";
 		return os;
 	}
+	bool operator==(const Vector& a, const Vector& b)
+	{
+		if (a.x != b.x || a.y != b.y || a.z != b.z || a.w != b.w)
+			return false;
+
+		return true;
+	}
+	bool operator!=(const Vector& a, const Vector& b)
+	{
+		if (a == b)
+			return false;
+
+		return true;
+	}
 }
