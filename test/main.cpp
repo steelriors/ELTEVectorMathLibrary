@@ -20,6 +20,10 @@ Matrix AminusB(Vector(-9, -6, -3, 0), Vector(-4, -1, 2, 5), Vector(1, 4, -3, 0),
 Matrix At(Vector(0, 1, 2, 3), Vector(2, 3, 4, 5), Vector(4, 5, 6, 7), Vector(6, 7, 8, 9));
 Matrix AB(Vector(56, 44, 72, 60), Vector(78, 62, 96, 80), Vector(100, 80, 120, 100), Vector(122, 98, 144, 120));
 Vector a(0, 1, 2, 3);
+Vector aRot180X(0, -1, -2, 3);
+Vector aRot180Y(0, 1, -2, 3);
+Vector aRot180Z(0, -1, 2, 3);
+
 
 TEST_CASE("Add") {
 	REQUIRE(Matrix::Add(A, B) == Matrix::Add(B, A));
@@ -68,5 +72,8 @@ TEST_CASE("Frobenius Norm") {
 }
 
 TEST_CASE("Rotation") {
-	REQUIRE(Matrix::Norm_max(Matrix::Subtract(Matrix::CreateRotation(2.0f * PI, 2.0f * PI, 2.0f * PI) , Matrix::Identity())) < 0.000001);
+	REQUIRE(abs(Matrix::Norm_max(Matrix::Subtract(Vector::Multiply(Matrix::CreateRotation(PI, 0, 0), a), aRot180X))) < FLT_EPSILON*10);
+	REQUIRE(abs(Matrix::Norm_max(Matrix::Subtract(Vector::Multiply(Matrix::CreateRotation(0, PI, 0), a), aRot180Y))) < FLT_EPSILON*10);
+	REQUIRE(abs(Matrix::Norm_max(Matrix::Subtract(Vector::Multiply(Matrix::CreateRotation(0, 0, PI), a), aRot180Z))) < FLT_EPSILON*10);
+	REQUIRE(abs(Matrix::Norm_max(Matrix::Subtract(Matrix::CreateRotation(0.0f, PI, PI),Matrix::CreateRotation(2.0f * PI, 5.0f * PI, 7.0f * PI)))) < FLT_EPSILON*100);
 }
