@@ -99,7 +99,7 @@ namespace ELTEVectorMathLib
 	{
 		return Length(Subtract(b, a));
 	}
-	///
+	///Returns a linearly interpolated vector between a and b
 	Vector Vector::Lerp(const Vector& a, const Vector& b, Scalar t)
 	{
 		return Vector(lerp(a.x, b.x, t), lerp(a.y, b.y, t), lerp(a.z, b.z, t), lerp(a.w, b.w, t));
