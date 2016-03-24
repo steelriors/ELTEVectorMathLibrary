@@ -43,6 +43,8 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Quaternion& v);
+	bool operator==(const Quaternion& a, const Quaternion& b);
+	bool operator!=(const Quaternion& a, const Quaternion& b);
 }
 
 #endif // _QUATERNION_H_

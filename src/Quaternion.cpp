@@ -73,4 +73,20 @@ namespace ELTEVectorMathLib
 		os << fixed << "{ " << q.x << ", " << q.y << ", " << q.z << ", " << q.w << " }";
 		return os;
 	}
+	///Returns true if two quaternions are equal, false otherwise
+	bool operator==(const Quaternion& a, const Quaternion& b)
+	{
+		if (a.x != b.x || a.y != b.y || a.z != b.z || a.w != b.w)
+			return false;
+
+		return true;
+	}
+	///Returns true if two quaternions are NOT equal, false if they are
+	bool operator!=(const Quaternion& a, const Quaternion& b)
+	{
+		if (a == b)
+			return false;
+
+		return true;
+	}
 }
