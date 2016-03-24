@@ -1,3 +1,19 @@
+/**
+* \class Matrix
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating matrices.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 #include <iostream>

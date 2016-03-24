@@ -1,3 +1,21 @@
+/**
+* \class Test
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a class for testing out 
+* the functions if they are working
+* properly or not. It uses Catch testing
+* https://github.com/philsquared/Catch
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 

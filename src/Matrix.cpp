@@ -5,7 +5,7 @@ using namespace std;
 
 namespace ELTEVectorMathLib
 {
-
+	///Constructor
 	Matrix::Matrix(const Vector& row0, const Vector& row1, const Vector& row2, const Vector& row3)
 	{
 		row[0] = row0;
@@ -13,12 +13,11 @@ namespace ELTEVectorMathLib
 		row[2] = row2;
 		row[3] = row3;
 	}
-
-
+	///Destructor
 	Matrix::~Matrix()
 	{
 	}
-
+	///Adds two matrices
 	Matrix Matrix::Add(const Matrix& a, const Matrix& b)
 	{
 		Matrix retVal = a;
@@ -31,7 +30,7 @@ namespace ELTEVectorMathLib
 		}
 		return retVal;
 	}
-
+	///Substracts 2nd matrix from 1st matrix
 	Matrix Matrix::Subtract(const Matrix& a, const Matrix& b)
 	{
 		Matrix retVal = a;
@@ -44,7 +43,7 @@ namespace ELTEVectorMathLib
 		}
 		return retVal;
 	}
-
+	///Multiplies 1st Matrix from left, to 2nd matrix to the right
 	Matrix Matrix::Multiply(const Matrix& a, const Matrix& b)
 	{
 		Matrix retVal;
@@ -57,7 +56,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
-
+	///Multiplies matrix with scalar
 	Matrix Matrix::Multiply(const Matrix& a, Scalar b)
 	{
 		Matrix retVal = a;
@@ -72,7 +71,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
-
+	///Takes matrix to power p
 	Matrix Matrix::Pow(const Matrix& a, Scalar p)
 	{
 		if (p == 0)
@@ -86,6 +85,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+	/// Transposes matrix
 	Matrix Matrix::Transpose(const Matrix& a)
 	{
 		Matrix retVal;
@@ -97,6 +97,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+	/// Creates identity matrix
 	Matrix Matrix::Identity()
 	{
 		Matrix retVal;
@@ -108,6 +109,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+	///Creates null matrix
 	Matrix Matrix::Null()
 	{
 		Matrix retVal;
@@ -117,6 +119,7 @@ namespace ELTEVectorMathLib
 
 		return retVal;
 	}
+	///Returns the biggest absolute valued element from the matrix
 	Scalar Matrix::Norm_max(const Matrix& a)
 	{
 		Scalar max = abs(a.row[0].x);
@@ -132,6 +135,7 @@ namespace ELTEVectorMathLib
 		}
 		return max;
 	}
+	///Returns the maximum absolute column sum norm
 	Scalar Matrix::Norm_1(const Matrix& a)
 	{
 		Scalar max = abs(a.row[0].x) + abs(a.row[1].x) + abs(a.row[2].x) + abs(a.row[3].x);
@@ -143,6 +147,7 @@ namespace ELTEVectorMathLib
 			max = abs(a.row[0].w) + abs(a.row[1].w) + abs(a.row[2].w) + abs(a.row[3].w);
 		return max;
 	}
+	///Returns the maximum absolute row sum norm
 	Scalar Matrix::Norm_inf(const Matrix& a)
 	{
 		Scalar max = abs(a.row[0].x) + abs(a.row[0].y) + abs(a.row[0].z) + abs(a.row[0].w);
@@ -152,6 +157,7 @@ namespace ELTEVectorMathLib
 		}
 		return max;
 	}
+	///Returns the square root of the sum of the squares of all elements
 	Scalar Matrix::Norm_frob(const Matrix& a)
 	{
 		Scalar retVal = 0;
@@ -164,6 +170,7 @@ namespace ELTEVectorMathLib
 		retVal = sqrt(retVal);
 		return retVal;
 	}
+	///Creates roatation around x,y,z axis (values in radian)
 	Matrix Matrix::CreateRotation(Scalar x, Scalar y, Scalar z)
 	{
 		Matrix rotX = Matrix(
@@ -186,22 +193,24 @@ namespace ELTEVectorMathLib
 			);
 		return Matrix::Multiply(Matrix::Multiply(rotX, rotY), rotZ);
 	}
+	///Creates a translational matrix in x,y,z dimensions
 	Matrix Matrix::Translate(Scalar x, Scalar y, Scalar z)
 	{
 		return Matrix(Vector(1, 0, 0, x), Vector(0, 1, 0, y), Vector(0, 0, 1, z), Vector(0, 0, 0, 1));
 	}
+	///Creates a scaling matrix in x,y,z dimensions
 	Matrix Matrix::Scale(Scalar x, Scalar y, Scalar z)
 	{
 		return Matrix(Vector(x, 0, 0, 0), Vector(0, y, 0, 0), Vector(0, 0, z, 0), Vector(0, 0, 0, 1));
 	}
 
-
+	///Prints out the matrix
 	ostream& operator<<(ostream& os, const Matrix& m)
 	{
 		os << fixed << "[" << m.row[0] << endl << " " << m.row[1] << endl << " " << m.row[2] << endl << " " << m.row[3] << "]";
 		return os;
 	}
-
+	///Returns true if matrices are equal, false otherwise
 	bool operator==(const Matrix& a, const Matrix& b)
 	{
 		for (int i = 0; i < 4; i++) {
