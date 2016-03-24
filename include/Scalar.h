@@ -1,3 +1,19 @@
+/**
+* \class Scalar
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating scalars.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _SCALAR_H_
 #define _SCALAR_H_
 

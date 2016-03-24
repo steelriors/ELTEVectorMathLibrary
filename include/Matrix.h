@@ -1,3 +1,19 @@
+/**
+* \class Matrix
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating matrices.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 #include <iostream>
@@ -15,8 +31,10 @@ namespace ELTEVectorMathLib
 		Vector row[4];
 
 		static Matrix Add(const Matrix& a, const Matrix& b);
+		static Matrix Subtract(const Matrix& a, const Matrix& b);
 		static Matrix Multiply(const Matrix& a, const Matrix& b);
-		static Matrix Pow(const Matrix& a, /*unsigned int*/Scalar p);
+		static Matrix Multiply(const Matrix& a, Scalar b);
+		static Matrix Pow(const Matrix& a, Scalar p);
 		static Matrix Transpose(const Matrix& a);
 		static Matrix Identity();
 		static Matrix Null();
@@ -25,6 +43,8 @@ namespace ELTEVectorMathLib
 		static Scalar Norm_inf(const Matrix& a);
 		static Scalar Norm_frob(const Matrix& a);
 		static Matrix CreateRotation(Scalar x, Scalar y, Scalar z);
+		static Matrix Translate(Scalar x, Scalar y, Scalar z);
+		static Matrix Scale(Scalar x, Scalar y, Scalar z);
 	};
 
 

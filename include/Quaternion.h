@@ -1,3 +1,19 @@
+/**
+* \class Quaternion
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating quaternions.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _QUATERNION_H_
 #define _QUATERNION_H_
 #include <iostream>
@@ -27,6 +43,8 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Quaternion& v);
+	bool operator==(const Quaternion& a, const Quaternion& b);
+	bool operator!=(const Quaternion& a, const Quaternion& b);
 }
 
 #endif // _QUATERNION_H_

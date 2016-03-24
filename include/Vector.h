@@ -1,3 +1,19 @@
+/**
+* \class Vector
+*
+* \ingroup ELTEVectorMathLibrary
+*
+* This is a simple class for creating
+* and manipulating vectors.
+*
+* \author Janos Turanszki, Tamas Nyiri, Gergo Kiss
+*
+* \version 0.1
+*
+* \date $Date: 2016/03/24
+*
+*/
+
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 #include <iostream>
@@ -20,15 +36,10 @@ namespace ELTEVectorMathLib
 		static Vector Add(const Vector& a, const Vector& b);
 		static Vector Subtract(const Vector& a, const Vector& b);
 		static Vector Multiply(const Vector& a, Scalar b);
-		static Vector Multiply(const Vector& a, const Vector& b);
 		static Vector Multiply(const Vector& a, const Matrix& b);
 		static Vector Multiply(const Matrix& a, const Vector& b);
 		static Vector Identity();
 		static Vector Null();
-		static Vector Pow(const Vector& a, /*unsigned int*/Scalar p);
-		static Vector RotateAroundX(const Vector& a, Scalar radians);
-		static Vector RotateAroundY(const Vector& a, Scalar radians);
-		static Vector RotateAroundZ(const Vector& a, Scalar radians);
 		static Scalar Norm_p(const Vector& a, Scalar p);
 		static Scalar Norm_inf(const Vector& a);
 		static Vector Normalize(const Vector& a);
@@ -39,6 +50,8 @@ namespace ELTEVectorMathLib
 
 
 	std::ostream& operator<<(std::ostream& os, const Vector& v);
+	bool operator==(const Vector& a, const Vector& b);
+	bool operator!=(const Vector& a, const Vector& b);
 }
 
 #endif // _VECTOR_H_
