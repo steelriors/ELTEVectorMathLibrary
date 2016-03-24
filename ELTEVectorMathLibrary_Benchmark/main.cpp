@@ -3,6 +3,8 @@
 #include "../include/Matrix.h"
 #include "../include/Quaternion.h"
 #include "../include/SSEVector.h"
+#include "../include/SSEMatrix.h"
+#include "../include/SSEQuaternion.h"
 
 #include <iostream>
 using namespace std;
@@ -21,8 +23,12 @@ int main()
 	SSEVector ssevec1(325, 6, 34552, 132);
 	Matrix mat0(Vector(0, 2, 4, 6), Vector(1, 3, 5, 7), Vector(2, 4, 6, 8), Vector(3, 5, 7, 9));
 	Matrix mat1(Vector(9, 8, 7, 6), Vector(5, 4, 3, 2), Vector(1, 0, 9, 8), Vector(7, 6, 5, 4));
+	SSEMatrix ssemat0(SSEVector(0, 2, 4, 6), SSEVector(1, 3, 5, 7), SSEVector(2, 4, 6, 8), SSEVector(3, 5, 7, 9));
+	SSEMatrix ssemat1(SSEVector(9, 8, 7, 6), SSEVector(5, 4, 3, 2), SSEVector(1, 0, 9, 8), SSEVector(7, 6, 5, 4));
 	Quaternion quat0(21, 2, 324, 3);
 	Quaternion quat1(3, 234, 43, 435345);
+	SSEQuaternion ssequat0(21, 2, 324, 3);
+	SSEQuaternion ssequat1(3, 234, 43, 435345);
 
 	////////////////////////////////////////////////////////////////////////////
 	{
@@ -45,6 +51,13 @@ int main()
 		for (int i = 0; i < _loop; ++i)
 		{
 			mat1 = Matrix::Multiply(mat0, mat1);
+		}
+	}
+	{
+		TIMER("Matrix Benchmark - Multiply - SSE");
+		for (int i = 0; i < _loop; ++i)
+		{
+			ssemat1 = SSEMatrix::Multiply(ssemat0, ssemat1);
 		}
 	}
 	////////////////////////////////////////////////////////////////////////////

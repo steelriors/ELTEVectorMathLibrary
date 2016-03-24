@@ -19,6 +19,15 @@ namespace ELTEVectorMathLib
 	{
 	}
 
+	Matrix Matrix::Add(const Matrix& a, const Matrix& b)
+	{
+		return Matrix(
+			Vector::Add(a.row[0], b.row[0]),
+			Vector::Add(a.row[1], b.row[1]),
+			Vector::Add(a.row[2], b.row[2]),
+			Vector::Add(a.row[3], b.row[3])
+			);
+	}
 	Matrix Matrix::Multiply(const Matrix& a, const Matrix& b)
 	{
 		Matrix retVal;

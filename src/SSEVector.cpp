@@ -8,8 +8,7 @@ namespace ELTEVectorMathLib
 	SSEVector::SSEVector(Scalar x, Scalar y, Scalar z, Scalar w)
 	{
 		_ASSERT(sizeof(Scalar) == sizeof(float) && "Double precision SSE Vector not implemented!");
-		alignas(16) float a[] = { x, y, z, w };
-		xyzw = _mm_load_ps(a);
+		xyzw = _mm_set_ps(w, z, y, x);
 	}
 
 	SSEVector::~SSEVector()
@@ -57,7 +56,6 @@ namespace ELTEVectorMathLib
 	SSEVector SSEVector::Dot(const SSEVector& a, const SSEVector& b)
 	{
 		SSEVector result;
-		//result.xyzw = _mm_dp_ps(a.xyzw, b.xyzw, 1);
 		__m128 m = _mm_mul_ps(a.xyzw, b.xyzw);
 		__m128 t = _mm_add_ps(m, _mm_shuffle_ps(m, m, _MM_SHUFFLE(2, 3, 0, 1)));
 		result.xyzw = _mm_add_ps(t, _mm_shuffle_ps(t, t, _MM_SHUFFLE(1, 0, 3, 2)));
