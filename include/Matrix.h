@@ -14,8 +14,11 @@ namespace ELTEVectorMathLib
 
 		Vector row[4];
 
+		static Matrix Add(const Matrix& a, const Matrix& b);
+		static Matrix Subtract(const Matrix& a, const Matrix& b);
 		static Matrix Multiply(const Matrix& a, const Matrix& b);
-		static Matrix Pow(const Matrix& a, /*unsigned int*/Scalar p);
+		static Matrix Multiply(const Matrix& a, Scalar b);
+		static Matrix Pow(const Matrix& a, Scalar p);
 		static Matrix Transpose(const Matrix& a);
 		static Matrix Identity();
 		static Matrix Null();
