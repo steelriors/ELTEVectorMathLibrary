@@ -45,7 +45,7 @@ namespace ELTEVectorMathLib
 		Scalar l = Length(a);
 		return Multiply(a, (Scalar)(1.0 / Length(a)));
 	}
-	///
+	///Create quaternion representing a rotation around an axis
 	Quaternion Quaternion::CreateFromAxisAngle(const Vector& axis, Scalar angleRadians)
 	{
 		Quaternion result;
@@ -58,7 +58,7 @@ namespace ELTEVectorMathLib
 		result.w = cos(angle);
 		return result;
 	}
-	///
+	///Create rotation matrix from quaternion
 	Matrix Quaternion::CreateMatrix(const Quaternion& q)
 	{
 		return Matrix(
