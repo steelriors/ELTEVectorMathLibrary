@@ -179,9 +179,9 @@ namespace ELTEVectorMathLib
 			Vector(0, 0, 0, 1)
 			);
 		Matrix rotZ = Matrix(
-			Vector(1, 0, 0, 0),
-			Vector(0, cos(z), -sin(z), 0),
-			Vector(0, sin(z), cos(z), 0),
+			Vector(cos(z), -sin(z), 0, 0),
+			Vector(sin(z), cos(z), 0, 0),
+			Vector(0, 0, 1, 0),
 			Vector(0, 0, 0, 1)
 			);
 		return Matrix::Multiply(Matrix::Multiply(rotX, rotY), rotZ);
