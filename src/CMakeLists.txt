@@ -1,1 +1,0 @@
-add_library(ELTEVectorMath Vector.cpp Matrix.cpp Quaternion.cpp SSEVector.cpp SSEMatrix.cpp SSEQuaternion.cpp)
