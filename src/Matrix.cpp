@@ -219,4 +219,47 @@ namespace ELTEVectorMathLib
 		}
 		return true;
 	}
+	
+	/// Matrix determinans
+	Matrix Matrix::Determine(const Matrix& a)
+	{
+		int retVal;
+		
+		retVal = a.row[0].x * a.row[1].y * a.row[2].z * a.row[3].w +
+				 a.row[0].x * a.row[1].z * a.row[2].w * a.row[3].y +
+				 a.row[0].x * a.row[1].w * a.row[2].y * a.row[3].z +
+				 
+				 a.row[0].y * a.row[1].x * a.row[2].w * a.row[3].z +
+				 a.row[0].y * a.row[1].z * a.row[2].x * a.row[3].w +
+				 a.row[0].y * a.row[1].w * a.row[2].z * a.row[3].x +
+				 
+				 a.row[0].z * a.row[1].x * a.row[2].y * a.row[3].w +
+				 a.row[0].z * a.row[1].y * a.row[2].w * a.row[3].x +
+				 a.row[0].z * a.row[1].w * a.row[2].x * a.row[3].y +
+				 
+				 a.row[0].w * a.row[1].x * a.row[2].z * a.row[3].y +
+				 a.row[0].w * a.row[1].y * a.row[2].x * a.row[3].z +
+				 a.row[0].w * a.row[1].z * a.row[2].y * a.row[3].x -
+				 
+				 a.row[0].x * a.row[1].y * a.row[2].w * a.row[3].z -
+				 a.row[0].x * a.row[1].z * a.row[2].y * a.row[3].w -
+				 a.row[0].x * a.row[1].w * a.row[2].z * a.row[3].y -
+				 //
+				 a.row[0].y * a.row[1].x * a.row[2].z * a.row[3].w -
+				 a.row[0].y * a.row[1].z * a.row[2].w * a.row[3].x -
+				 a.row[0].y * a.row[1].w * a.row[2].x * a.row[3].z -
+				 
+				 a.row[0].z * a.row[1].x * a.row[2].w * a.row[3].y -
+				 a.row[0].z * a.row[1].y * a.row[2].x * a.row[3].w -
+				 a.row[0].z * a.row[1].w * a.row[2].y * a.row[3].x -
+				 
+				 a.row[0].w * a.row[1].x * a.row[2].y * a.row[3].z -
+				 a.row[0].w * a.row[1].y * a.row[2].z * a.row[3].x -
+				 a.row[0].w * a.row[1].z * a.row[2].x * a.row[3].y;
+				 
+
+		return retVal;
+	}
+	
+}
 }
