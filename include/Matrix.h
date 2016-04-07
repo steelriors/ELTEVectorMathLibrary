@@ -45,6 +45,7 @@ namespace ELTEVectorMathLib
 		static Matrix CreateRotation(Scalar x, Scalar y, Scalar z);
 		static Matrix Translate(Scalar x, Scalar y, Scalar z);
 		static Matrix Scale(Scalar x, Scalar y, Scalar z);
+		static Matrix Determine(const Matrix& a)
 	};
 
 
