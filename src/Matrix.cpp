@@ -261,5 +261,86 @@ namespace ELTEVectorMathLib
 		return retVal;
 	}
 	
-}
+	Matrix Matrix::Rang(const Matrix& a)
+	{
+		int retVal=1;
+		int det;
+		
+		//Bal sarok 2x2-es determinánsa
+		det = (a.row[0].x * a.row[1].y) - (a.row[0].y * a.row[1].x);
+		
+		if(det==0) {return retVal;}
+		retVal++;
+		
+		//3x3-as determinánsok #1
+		det = a.row[0].x * a.row[1].y * a.row[2].z +
+			  a.row[0].y * a.row[1].z * a.row[2].x +
+			  a.row[0].z * a.row[1].x * a.row[2].y -
+			  a.row[2].x * a.row[1].y * a.row[0].z -
+			  a.row[2].y * a.row[1].z * a.row[0].x -
+			  a.row[2].z * a.row[1].x * a.row[0].y;
+			  
+		if(det != 0){
+			retVal++;
+			det = Matrix::Determine(const Matrix& a);
+			if(det == 0 ){
+				retVal++;
+				return retVal;
+			}else return retVal;
+		}
+		
+		//3x3-as determinánsok #2
+		det = a.row[0].x * a.row[1].y * a.row[2].w +
+			  a.row[0].y * a.row[1].w * a.row[2].x +
+			  a.row[0].w * a.row[1].x * a.row[2].y -
+			  a.row[2].x * a.row[1].y * a.row[0].w -
+			  a.row[2].y * a.row[1].w * a.row[0].x -
+			  a.row[2].w * a.row[1].x * a.row[0].y;
+			  
+		if(det != 0){
+			retVal++;
+			det = Matrix::Determine(a);
+			if(det == 0 ){
+				retVal++;
+				return retVal;
+			}else return retVal;
+		}
+		
+		//3x3-as determinánsok #3
+		det = a.row[0].x * a.row[1].y * a.row[3].z +
+			  a.row[0].y * a.row[1].z * a.row[3].x +
+			  a.row[0].z * a.row[1].x * a.row[3].y -
+			  a.row[3].x * a.row[1].y * a.row[0].z -
+			  a.row[3].y * a.row[1].z * a.row[0].x -
+			  a.row[3].z * a.row[1].x * a.row[0].y;
+			  
+		if(det != 0){
+			retVal++;
+			det = Matrix::Determine(a);
+			if(det == 0 ){
+				retVal++;
+				return retVal;
+			}else return retVal;
+		}
+		
+		//3x3-as determinánsok #4
+		det = a.row[0].x * a.row[1].y * a.row[3].w +
+			  a.row[0].y * a.row[1].w * a.row[3].x +
+			  a.row[0].w * a.row[1].x * a.row[3].y -
+			  a.row[3].x * a.row[1].y * a.row[0].w -
+			  a.row[3].y * a.row[1].w * a.row[0].x -
+			  a.row[3].w * a.row[1].x * a.row[0].y;
+			  
+		if(det != 0){
+			retVal++;
+			det = Matrix::Determine(a);
+			if(det == 0 ){
+				retVal++;
+				return retVal;
+			}else return retVal;
+		}
+		
+		return retVal;
+	}
+	
 }
