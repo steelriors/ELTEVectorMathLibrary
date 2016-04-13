@@ -46,6 +46,7 @@ namespace ELTEVectorMathLib
 		static Matrix Translate(Scalar x, Scalar y, Scalar z);
 		static Matrix Scale(Scalar x, Scalar y, Scalar z);
 		static Matrix Determine(const Matrix& a)
+		static Matrix Rang(const Matrix& a)
 	};
 
 
